@@ -1,0 +1,82 @@
+* {
+	box-sizing: border-box
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+div.contenedor {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+}
+
+div.lugar {
+	flex: 1;
+	box-shadow: inset 0 0 0px 5px rgba(0, 0, 0, 0.3);
+	background-size: cover;
+	background-position: center;
+	transition: flex .5s;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+div.lugar h2 {
+	font-family: Verdana;
+	font-size:25px;
+	color: brown;
+	text-align: center;
+	font-weight: bold
+}
+
+div.lugar h3 {
+	font-family: Verdana;
+	font-size:20px;
+	color: brown;
+	text-align: center;	
+	transition: transform 350ms
+}
+
+div.lugar h3.superior {
+	transform: translateY(-400px)
+}
+
+div.lugar h3.inferior {
+	transform: translateY(400px)
+}
+
+div.lugar.seleccionado.desplegar h3.superior,
+div.lugar.seleccionado.desplegar h3.inferior {
+	transform: translateY(0px)
+}
+
+
+
+
+
+div.lugar.lugar01 {
+	background-image: url(img/tarapoto.jpg)
+}
+
+div.lugar.lugar02 {
+	background-image: url(img/colca.jpg)
+}
+
+div.lugar.lugar03 {
+	background-image: url(img/yanahuara.jpg)
+}
+
+div.lugar.lugar04 {
+	background-image: url(img/llanganuco.jpg)
+}
+
+div.lugar.lugar05 {
+	background-image: url(img/machupicchu.jpg)
+}
+
+div.lugar.seleccionado {
+	flex: 5
+}
