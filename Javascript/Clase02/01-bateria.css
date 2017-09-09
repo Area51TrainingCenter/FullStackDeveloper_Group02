@@ -1,0 +1,36 @@
+html, body {
+	margin: 0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url(img/fondo.jpg);
+	background-size: cover;
+}
+
+div.contenedor {
+	width: 80vw;
+	height: 100vh;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center
+}
+
+div.tecla {
+	background-color: yellow;
+	font-size:30px;
+	line-height: 120px;
+	width: 8%;
+	text-align: center;
+	font-family: Tahoma;
+	color: red;
+	border: 1px solid black;
+	transition: box-shadow 100ms
+}
+
+div.tecla.seleccionada {
+	box-shadow: 0 0 30px yellow
+}
+
