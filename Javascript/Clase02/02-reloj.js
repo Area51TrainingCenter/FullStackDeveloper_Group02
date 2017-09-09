@@ -3,12 +3,17 @@ const minutero = document.querySelector(".minutero")
 const horario = document.querySelector(".horario")
 
 const despSegundero = 6
-const despMinutero = 2 // .1
-const despHorario = 1 // 0.00833333333
+const despMinutero = .1
+const despHorario =  0.00833333333
 
-let anguloSegundero = -90
-let anguloMinutero = -90
-let anguloHorario = -90
+const fechaTiempo = new Date()
+const horas = fechaTiempo.getHours()
+const minutos = fechaTiempo.getMinutes()
+const segundos = fechaTiempo.getSeconds()
+
+let anguloSegundero = -90 + segundos * despSegundero
+let anguloMinutero = -90 + minutos * despMinutero * 60
+let anguloHorario = -90 + horas * despHorario * 60 * 60
 
 const mover = ()=>{
 	anguloSegundero += despSegundero
