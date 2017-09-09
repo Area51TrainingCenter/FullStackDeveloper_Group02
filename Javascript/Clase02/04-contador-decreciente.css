@@ -1,0 +1,79 @@
+* {
+	box-sizing: border-box
+}
+
+html, body {
+	margin:0;
+	padding:0;
+	background-image: url(img/navidad.jpg);
+	background-size: cover
+}
+
+div.contenedor {
+	width: 50vw;
+	height: 100vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto
+}
+
+div.caja {
+	width: 23%;
+	font-family: Verdana;
+	font-size: 30px;
+	line-height: 50px;
+	color: white;
+	border: 1px solid white;
+	text-align: center;
+	background-color:black;
+}
+
+div.caja.dias:after {
+	content: "días";
+	display: block;
+	width: 100%;
+	font-size: 13px;
+	line-height: 18px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+div.caja.horas:after {
+	content: "horas";
+	display: block;
+	width: 100%;
+	font-size: 13px;
+	line-height: 18px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+div.caja.minutos:after {
+	content: "minutos";
+	display: block;
+	width: 100%;
+	font-size: 13px;
+	line-height: 18px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+div.caja.segundos:after {
+	content: "segundos";
+	display: block;
+	width: 100%;
+	font-size: 13px;
+	line-height: 18px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+div.separador {
+	width: 10%;
+	font-family: Verdana;
+	font-size: 30px;
+	line-height: 100px;
+	color: white;
+	text-align: center;
+}
