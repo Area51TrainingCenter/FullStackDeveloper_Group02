@@ -1,13 +1,3 @@
-const tbody = document.querySelector("tbody")
-
-const personas = ["Zulema", "Cinthya", "Gloria", "Alejandro", "Kike"]
-
-const nombres = personas.map((elemento, indice) => {
-	return elemento.toUpperCase()
-})
-
-console.log(nombres)
-
 const historias = [
 	{id: 1, nHistoria: 2000, cNombrePaciente: "Clarisa", cApellidoPaternoPaciente: "        Barco    ", edad: 15},
 	{id: 2, nHistoria: 2010, cNombrePaciente: "Maritza", cApellidoPaternoPaciente: "Hidalgo   ", edad:8},
@@ -16,22 +6,20 @@ const historias = [
 	{id: 5, nHistoria: 2014, cNombrePaciente: "Mario", cApellidoPaternoPaciente: "Alcazaba", edad:20}
 ]
 
-const nombreCompleto = (nombre, apellido) => {
-	return `${nombre.trim().toUpperCase()} ${apellido.trim()}`
-}
+const nombreCompleto = historia => `${historia.cNombrePaciente.trim().toUpperCase()} ${historia.cApellidoPaternoPaciente.trim()}`
 
-let filas = historias.map(historia => {
+const filas = historias.map(historia => {
 	return `
 		<tr>
 			<td>${historia.id}</td>
 			<td>${historia.nHistoria}</td>
 			<td>
-				${nombreCompleto(historia.cNombrePaciente, historia.cApellidoPaternoPaciente)}</td>
+				${nombreCompleto(historia)}</td>
 			<td>${historia.edad}</td>
 		</tr>
 	`
-})
+}).join("")
 
-filas = filas.join("")
+console.log(filas)
+// historias.map(...).join("")
 
-tbody.innerHTML = filas
