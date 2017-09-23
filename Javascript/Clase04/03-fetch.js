@@ -18,26 +18,13 @@
         let idRegistroSeleccionado
 
         const ajax = (metodo, apiRest, datos) => {
-            const promesa = new Promise((resolve, reject) => {   
-                const obj = new XMLHttpRequest()
-                obj.onreadystatechange = function() {
-                    if(this.readyState === 4 && this.status === 200) {
-                        resolve(this.responseText)
-                    } else if(this.readyState === 4 && this.status != 200) {
-                        reject()
-                    }
-                }
+            const opciones = {method:metodo}
 
-                obj.open(metodo, apiRest, true)
+            if(metodo!="get" && datos) {
+                opciones.body = datos
+            }
 
-                if(metodo!="get" && datos) {
-                    obj.send(datos)
-                } else {
-                    obj.send()
-                }
-            })
-
-            return promesa
+            return fetch(apiRest, opciones).then(respuesta => respuesta.json())
         }
 
         const listar = () => {
