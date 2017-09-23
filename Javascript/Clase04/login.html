@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+
+
+    </head>
+    <body>
+
+        <div class="card col-6">
+            <h4 class="card-header">Login</h4>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="txtUsuario" placeholder="Ingrese su usuario" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="txtContrasena" placeholder="Ingrese su contraseña" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="btn btn-block btn-success" id="btnLogin">Ingresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <a href="#" class="btn btn-primary" id="btnListar">Listar</a>
+        <a href="#" class="btn btn-default" id="btnCerrar">Cerrar Sesión</a>
+
+        <script>
+            (function(d){
+                d.addEventListener("DOMContentLoaded", ()=>{
+                    const inputUsuario = d.querySelector("#txtUsuario")
+                    const inputContrasena = d.querySelector("#txtContrasena")
+                    const botonLogin = d.querySelector("#btnLogin")
+                    const botonListar = d.querySelector("#btnListar")
+                    const botonCerrar = d.querySelector("#btnCerrar")
+
+
+                    const encodificarUrl = formData => {
+                        const parametros = new URLSearchParams()
+
+                        for(let dato of formData.entries()){
+                            parametros.append(dato[0], dato[1])
+                        }
+
+                        return parametros.toString()
+                    }
+
+
+                    botonLogin.addEventListener("click", function(e){
+                        e.preventDefault()
+
+                        const usuario = inputUsuario.value
+                        const contrasena = inputContrasena.value
+
+                        const fd = new FormData()
+                        fd.append("usuario", usuario)
+                        fd.append("contrasena", contrasena)
+
+                        const cabeceras = new Headers()
+                        cabeceras.append("Content-Type", "application/x-www-form-urlencoded")
+
+                        fetch("http://localhost:1370/auth",{
+                            method:"post",
+                            body: encodificarUrl(fd),
+                            headers: cabeceras
+                        })
+                        .then(respuesta => {
+                            return respuesta.json()
+                        })
+                        .then(registro => {
+                            if(localStorage) {
+                                localStorage.setItem("token", registro.token)
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                    })
+
+                    botonListar.addEventListener("click", function(e){
+                        e.preventDefault()
+
+                        const token = localStorage.getItem("token")
+
+                        const cabeceras = new Headers()
+                        cabeceras.append("Authorization", `Bearer ${token}`)
+
+                        fetch("http://localhost:1370/listar", {
+                            headers: cabeceras
+                        })
+                        .then(respuesta => respuesta.json())
+                        .then(registros => {
+                            console.log(registros)
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                    })
+
+                    botonCerrar.addEventListener("click", function(e){
+                        e.preventDefault()
+                        localStorage.removeItem("token")
+                    })
+
+
+
+
+
+                })
+            })(document)
+        </script>
+
+    
+    </body>
+</html>
