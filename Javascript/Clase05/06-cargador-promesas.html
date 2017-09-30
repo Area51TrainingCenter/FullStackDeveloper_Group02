@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {display: none}
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        const promesa01 = new Promise((resolve, reject) => {
+            const img = document.createElement("img")
+            img.src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bosque.jpg/250px-Bosque.jpg"
+            img.onload = function(){
+                resolve()
+            }
+            document.querySelector("div").appendChild(img)
+        })
+
+        const promesa02 = new Promise((resolve, reject) => {
+            const img = document.createElement("img")
+            img.src="https://ichef-1.bbci.co.uk/news/660/cpsprodpb/8667/production/_95470443_gettyimages-636753858.jpg"
+            img.onload = function(){
+                resolve()
+            }
+            document.querySelector("div").appendChild(img)
+        })
+
+        Promise.all([promesa01, promesa02])
+            .then(()=>{
+                document.querySelector("div").style.display = "block"
+            })
+    </script>
+</body>
+</html>
