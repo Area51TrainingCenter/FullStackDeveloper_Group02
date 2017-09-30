@@ -1,0 +1,8 @@
+<p>
+  {{titulo}}
+</p>
+
+<input type="text" [(ngModel)]="titulo">
+
+<button [disabled]="!habilitado" (click)="habilitadoLogin=true">Ingresar</button>
+<button [disabled]="!habilitadoLogin">Login</button>
