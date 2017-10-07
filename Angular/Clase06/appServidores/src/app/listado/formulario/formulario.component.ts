@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Servidor } from "../../compartido/servidor"
 
 @Component({
   selector: 'app-formulario',
@@ -11,6 +12,10 @@ export class FormularioComponent implements OnInit {
   @ViewChild("estado") estado: ElementRef
   @ViewChild("descripcion") descripcion: ElementRef
   @ViewChild("area") area: ElementRef
+
+  //@Output("nuevoServer") eventoAgregarServidor = new EventEmitter<{nombre: string, descripcion:string, estado: string, area:string}>()
+
+  @Output("nuevoServer") eventoAgregarServidor = new EventEmitter<Servidor>()
 
   nombreServidor: string
   estadoServidor: string
@@ -36,6 +41,22 @@ export class FormularioComponent implements OnInit {
   }*/
 
   agregarServidor(){
+    /*const data = {
+      nombre : this.nombreServidor,
+      estado : this.estadoServidor,
+      descripcion : this.descripcionServidor,
+      area : this.areaServidor
+    }*/
+
+    const data: Servidor = new Servidor(this.nombreServidor, this.descripcionServidor, this.estadoServidor, this.areaServidor)
+
+    this.eventoAgregarServidor.emit(data)
+
+    this.nombreServidor = ""
+    this.descripcionServidor = ""
+    this.estadoServidor = ""
+    this.areaServidor = ""
+
     console.log(this.nombreServidor)
     console.log(this.estadoServidor)
     console.log(this.descripcionServidor)
