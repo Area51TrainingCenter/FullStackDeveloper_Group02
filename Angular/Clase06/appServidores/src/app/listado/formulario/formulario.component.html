@@ -1,0 +1,18 @@
+<form ngNoForm>
+  <div class="form-group">
+      <input type="text" class="form-control" placeholder="Ingrese el nombre" #nombre [(ngModel)]="nombreServidor">
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control" placeholder="Ingrese el estado" #estado [(ngModel)]="estadoServidor">
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control" placeholder="Ingrese la descripcion" #descripcion [(ngModel)]="descripcionServidor">
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control" placeholder="Ingrese el area" #area [(ngModel)]="areaServidor">
+  </div>
+  <div class="form-group">
+      <!--<button class="btn btn-success" type="button" (click)="agregarServidor(nombre.value, estado.value, descripcion.value, area.value)">Ingresar</button>-->
+      <button class="btn btn-success" type="button" (click)="agregarServidor()">Ingresar</button>
+  </div>
+</form>
