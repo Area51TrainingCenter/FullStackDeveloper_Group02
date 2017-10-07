@@ -12,8 +12,14 @@ export class AppComponent {
     {nombre: "Web Piloto", estado: "activo", descripcion: "Usado por el proyecto Piloto20", area: "Desarrollo"}
   ]*/
 
+  servidorSeleccionado
+
   servidores: Array<Servidor> = [
     new Servidor("Firewall", "activo", "Uso exclusivo del area de seguridad", "Seguridad"),
     new Servidor("Web Piloto", "activo", "Usado por el proyecto Piloto20", "Desarrollo")
   ]
+
+  seleccionServer(servidor: Servidor){
+    this.servidorSeleccionado = servidor
+  }
 }

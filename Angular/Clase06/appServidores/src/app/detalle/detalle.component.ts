@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Servidor } from '../compartido/servidor'
 
 @Component({
   selector: 'app-detalle',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detalle.component.css']
 })
 export class DetalleComponent implements OnInit {
+
+  @Input() dato: Servidor
 
   constructor() { }
 
