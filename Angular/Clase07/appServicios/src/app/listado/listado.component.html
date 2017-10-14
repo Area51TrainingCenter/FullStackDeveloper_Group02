@@ -1,0 +1,4 @@
+
+  <app-formulario></app-formulario>
+  <app-pelicula *ngFor="let item of lista" [pela]="item" (click)="peliculasService.peliculaSeleccionada = item"></app-pelicula>
+
