@@ -18,9 +18,10 @@ import { EditarServidorComponent } from './servidores/editar-servidor/editar-ser
 
 const rutas: Routes = [
   {path: "", component: HomeComponent, pathMatch: "full"},
-  {path: "servidores", component: ListadoComponent, canActivate:[SeguridadGuard]},
-  {path: "servidores/detalle/:id", component: DetalleServidorComponent, canActivate:[SeguridadGuard]},
-  {path: "servidores/editar/:id", component: EditarServidorComponent, canActivate:[SeguridadGuard]},
+  {path: "servidores", component: ListadoComponent, canActivateChild:[SeguridadGuard], children: [
+    {path: "detalle/:id", component: DetalleServidorComponent},
+    {path: "editar/:id", component: EditarServidorComponent}
+  ]},
   {path: "areas", component: ListadoAreasComponent},
   // {path: "**", component:ListadoComponent}
   {path: "**", redirectTo: "/"}
