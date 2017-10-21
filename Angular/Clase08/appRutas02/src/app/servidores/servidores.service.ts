@@ -18,15 +18,22 @@ export class ServidoresService {
   }
 
   grabar(servidor: Servidor){
+    console.log(servidor)
     this.servidores.forEach(item => {
-      if(item.id === servidor.id) item = servidor
+      if(item.id === +servidor.id) {
+        item.descripcion = servidor.descripcion
+        item.nombre = servidor.nombre
+        item.tipo = servidor.tipo
+        item.ubicacion = servidor.ubicacion
+      }
     })
+    console.log(this.servidores)
   }
 
   detalle(id: number): Servidor {
     let servidor: Servidor
     this.servidores.forEach(item => {
-      if(item.id === id) servidor = item
+      if(item.id === +id) servidor = new Servidor(item.id, item.nombre, item.descripcion, item.tipo, item.ubicacion)
     })
 
     return servidor

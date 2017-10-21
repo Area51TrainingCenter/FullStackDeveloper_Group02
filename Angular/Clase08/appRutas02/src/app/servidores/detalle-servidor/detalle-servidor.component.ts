@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router, Params } from '@angular/router'
+import { ServidoresService } from '../servidores.service'
+import { Servidor } from '../servidor'
 
 @Component({
   selector: 'app-detalle-servidor',
@@ -8,11 +10,29 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class DetalleServidorComponent implements OnInit {
   id: number
+  servidor: Servidor
 
-  constructor(private rutaActiva: ActivatedRoute) { }
+  constructor(private rutaActiva: ActivatedRoute, private servidoresService: ServidoresService, private router: Router) { }
 
   ngOnInit() {
     this.id = this.rutaActiva.snapshot.params.id
+    this.servidor = this.servidoresService.detalle(this.id)
+
+    this.rutaActiva.params
+      .subscribe(
+        (parametros: Params) => {
+          this.id = parametros["id"]
+          this.servidor = this.servidoresService.detalle(this.id)
+        }
+      )
+  }
+
+  cargar(id: number){
+    this.router.navigate(["servidores", "detalle", id])
+  }
+
+  editar(){
+    this.router.navigate(["servidores", "editar", this.id])
   }
 
 }
