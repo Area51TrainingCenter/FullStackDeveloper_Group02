@@ -17,7 +17,7 @@ const rutas: Routes = [
     {path: "detalle/:id", component: DetalleServidorComponent},
     {path: "editar/:id", component: EditarServidorComponent, canActivate:[AutorizacionGuard], canDeactivate: [GuardadoGuard]}
   ]},
-  {path: "areas", loadChildren: "./areas/areas.module#AreasModule"},
+  {path: "areas", loadChildren: "./areas/areas.module#AreasModule", canLoad: [AutenticacionGuard]},
   {path: "**", redirectTo: "/"}
 ]
 

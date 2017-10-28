@@ -7,7 +7,6 @@ import { ServidoresService } from './servidores/servidores.service';
 import { SeguridadService } from './auth/seguridad.service'
 import { AppRoutingModule } from "app/app.routing.module";
 import { CabeceraComponent } from "app/cabecera/cabecera.component";
-import { AreasModule } from "app/areas/areas.module";
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import { AreasModule } from "app/areas/areas.module";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AreasModule
+    AppRoutingModule
   ],
   providers: [ServidoresService, SeguridadService],
   bootstrap: [AppComponent]

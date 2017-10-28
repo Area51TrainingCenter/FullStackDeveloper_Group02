@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, CanLoad, Route } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { SeguridadService } from "app/auth/seguridad.service";
 
 @Injectable()
-export class AutenticacionGuard implements CanActivate, CanActivateChild {
+export class AutenticacionGuard implements CanActivate, CanActivateChild, CanLoad {
+  canLoad(route: Route): boolean {
+    return this.seguridadService.estaAutenticado()
+  }
 
   constructor(private seguridadService: SeguridadService){}
 
