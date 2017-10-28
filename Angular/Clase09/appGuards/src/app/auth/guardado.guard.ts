@@ -16,6 +16,10 @@ export class GuardadoGuard implements CanDeactivate<canDeactivateComponent> {
       return true
     }
 
+    return true
+
+
+
   }
 
 }
