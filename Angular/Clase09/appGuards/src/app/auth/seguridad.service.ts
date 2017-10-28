@@ -15,7 +15,7 @@ export class SeguridadService {
 
   private autenticado: boolean = false
 
-  private usuarioEncontrado:Array<IUsuario>
+  usuarioEncontrado:Array<IUsuario>
 
   constructor(private router: Router) { }
 

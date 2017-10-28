@@ -4,29 +4,52 @@ import { NgForm } from '@angular/forms'
 import { ServidoresService } from '../servidores.service'
 import { Servidor } from '../servidor'
 
+interface canDeactivateComponent {
+  canDeactivateComponente: () => boolean
+}
+
 @Component({
   selector: 'app-editar-servidor',
   templateUrl: './editar-servidor.component.html',
   styleUrls: ['./editar-servidor.component.css']
 })
-export class EditarServidorComponent implements OnInit {
+export class EditarServidorComponent implements OnInit, canDeactivateComponent {
   id: number
   servidor: Servidor
+  servidorOriginal: Servidor
   permitir: boolean
   fragmento: string = ""
 
   constructor(private servidoresService: ServidoresService, private rutaActiva: ActivatedRoute, private ruteador: Router) { }
 
+  verificarIgualdad(original: Servidor, actual: Servidor): boolean {
+     for(let propiedad in original) {
+       if(original[propiedad] != actual[propiedad]) {
+         return true
+       }
+     }
+     return false
+  }
+
+  canDeactivateComponente():boolean {
+    return this.verificarIgualdad(this.servidorOriginal, this.servidor)
+  }
+
   ngOnInit() {
     // Parámetros en la URL
     this.id = this.rutaActiva.snapshot.params.id
-    this.servidor = this.servidoresService.detalle(this.id)
+
+    const servidor: Servidor = this.servidoresService.detalle(this.id)
+    this.servidor = servidor
+    this.servidorOriginal = Object.assign({}, servidor, {})
 
     this.rutaActiva.params
       .subscribe(
         (parametros: Params) => {
           this.id = parametros["id"]
-          this.servidor = this.servidoresService.detalle(this.id)
+          const server: Servidor = this.servidoresService.detalle(this.id)
+          this.servidor = server
+          this.servidorOriginal = Object.assign({}, server, {})
         }
       )
 

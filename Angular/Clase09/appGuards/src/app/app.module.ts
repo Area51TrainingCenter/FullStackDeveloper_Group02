@@ -15,12 +15,14 @@ import { SeguridadService } from './auth/seguridad.service'
 import { DetalleServidorComponent } from './servidores/detalle-servidor/detalle-servidor.component';
 import { EditarServidorComponent } from './servidores/editar-servidor/editar-servidor.component'
 import { AutenticacionGuard } from "app/auth/autenticacion.guard";
+import { AutorizacionGuard } from "app/auth/autorizacion.guard";
+import { GuardadoGuard } from "app/auth/guardado.guard";
 
 const rutas: Routes = [
   {path: "", component: HomeComponent, pathMatch: "full"},
-  {path: "servidores", component: ListadoComponent, canActivate: [AutenticacionGuard], children: [
+  {path: "servidores", component: ListadoComponent, canActivate: [AutenticacionGuard], canActivateChild:[AutenticacionGuard], children: [
     {path: "detalle/:id", component: DetalleServidorComponent},
-    {path: "editar/:id", component: EditarServidorComponent}
+    {path: "editar/:id", component: EditarServidorComponent, canActivate:[AutorizacionGuard], canDeactivate: [GuardadoGuard]}
   ]},
   {path: "areas", component: ListadoAreasComponent},
   // {path: "**", component:ListadoComponent}
@@ -43,7 +45,7 @@ const rutas: Routes = [
     RouterModule.forRoot(rutas),
     FormsModule
   ],
-  providers: [ServidoresService, SeguridadService, AutenticacionGuard],
+  providers: [ServidoresService, SeguridadService, AutenticacionGuard, AutorizacionGuard, GuardadoGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
