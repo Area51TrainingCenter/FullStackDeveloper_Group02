@@ -1,0 +1,11 @@
+<div class="card" *ngIf="servidor">
+  <h4 class="card-header">{{servidor.nombre}}</h4>
+  <div class="card-body">
+    <p>ID: {{servidor.id}}</p>
+    <p>Descripción: {{servidor.descripcion}}</p>
+    <p>Tipo: {{servidor.tipo}}</p>
+    <p>Ubicación: {{servidor.ubicacion}}</p>
+  </div>
+  <button class="btn btn-warning btn-block" (click)="editar()">Editar</button>
+  <button class="btn btn-success btn-block" (click)="cargar(3)">Cargar JIGSAW</button>
+</div>
