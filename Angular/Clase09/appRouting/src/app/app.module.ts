@@ -1,20 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+
 
 import { AppComponent } from './app.component';
 import { ServidoresService } from './servidores/servidores.service';
 import { SeguridadService } from './auth/seguridad.service'
 import { AppRoutingModule } from "app/app.routing.module";
+import { CabeceraComponent } from "app/cabecera/cabecera.component";
+import { AreasModule } from "app/areas/areas.module";
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CabeceraComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AreasModule
   ],
   providers: [ServidoresService, SeguridadService],
   bootstrap: [AppComponent]

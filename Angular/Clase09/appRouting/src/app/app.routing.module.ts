@@ -1,14 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router'
+import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common'
 
-import { HomeComponent } from "app/home/home.component";
-import { ListadoComponent } from "app/servidores/listado/listado.component";
-import { AutenticacionGuard } from "app/auth/autenticacion.guard";
-import { DetalleServidorComponent } from "app/servidores/detalle-servidor/detalle-servidor.component";
-import { EditarServidorComponent } from "app/servidores/editar-servidor/editar-servidor.component";
-import { GuardadoGuard } from "app/auth/guardado.guard";
-import { AutorizacionGuard } from "app/auth/autorizacion.guard";
-import { ListadoAreasComponent } from "app/areas/listado/listado.component";
+import { HomeComponent } from "./home/home.component";
+import { ListadoComponent } from "./servidores/listado/listado.component";
+import { AutenticacionGuard } from "./auth/autenticacion.guard";
+import { DetalleServidorComponent } from "./servidores/detalle-servidor/detalle-servidor.component";
+import { EditarServidorComponent } from "./servidores/editar-servidor/editar-servidor.component";
+import { GuardadoGuard } from "./auth/guardado.guard";
+import { AutorizacionGuard } from "./auth/autorizacion.guard";
 
 const rutas: Routes = [
   {path: "", component: HomeComponent, pathMatch: "full"},
@@ -16,14 +17,24 @@ const rutas: Routes = [
     {path: "detalle/:id", component: DetalleServidorComponent},
     {path: "editar/:id", component: EditarServidorComponent, canActivate:[AutorizacionGuard], canDeactivate: [GuardadoGuard]}
   ]},
-  {path: "areas", component: ListadoAreasComponent},
-  // {path: "**", component:ListadoComponent}
+  {path: "areas", loadChildren: "./areas/areas.module#AreasModule"},
   {path: "**", redirectTo: "/"}
 ]
 
 @NgModule({
+  declarations: [
+    HomeComponent,
+    ListadoComponent,
+    DetalleServidorComponent,
+    EditarServidorComponent
+  ],
   imports: [
-    RouterModule.forRoot(rutas)
+    FormsModule,
+    RouterModule.forRoot(rutas),
+    CommonModule
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [AutenticacionGuard, AutorizacionGuard, GuardadoGuard]
 })
