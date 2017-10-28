@@ -1,0 +1,23 @@
+<div class="card" *ngIf="servidor">
+  <h4 class="card-header">{{servidor.nombre}}</h4>
+  <div class="card-body">
+    <form (ngSubmit)="grabar(f)" #f="ngForm">
+      <div class="form-group">
+        <input type="text" class="form-control" name="nombre" [(ngModel)]="servidor.nombre">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="descripcion" [(ngModel)]="servidor.descripcion">
+        </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="tipo" [(ngModel)]="servidor.tipo">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="ubicacion" [(ngModel)]="servidor.ubicacion" [disabled]="!permitir">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block">Grabar</button>
+      </div>
+    </form>
+    <button class="btn btn-primary btn-block" (click)="editar(3)">Editar Jigsaw</button>
+  </div>
+</div>
