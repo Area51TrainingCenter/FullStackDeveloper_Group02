@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms'
 import { HomeComponent } from './home/home.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { AppRouting } from '../app-routing.module';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { AppRouting } from '../app-routing.module';
     FormsModule,
     AppRouting
   ],
-  declarations: [HomeComponent, CabeceraComponent],
+  declarations: [HomeComponent, CabeceraComponent, RegistroComponent],
   exports: [
     CabeceraComponent,
     AppRouting
