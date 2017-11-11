@@ -1,0 +1,7 @@
+<form class="form-signin" (ngSubmit)="loguear()" #formulario="ngForm" *ngIf="!usuarioLogueado">
+  <h2 class="form-signin-heading">Login</h2>
+  <input type="email" id="inputEmail" class="form-control" placeholder="Correo" required autofocus name="email" [(ngModel)]="email">
+  <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="password" [(ngModel)]="password">
+  <a [routerLink]="['registro']">Registro</a>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!formulario.valid">Ingresar</button>
+</form>
