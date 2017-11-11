@@ -40,7 +40,8 @@ export class AutenticacionService {
   }
 
   obtenerToken(){
-
+    // return this.usuario.token
+    return localStorage.getItem("token")
   }
 
   estaAutenticado():boolean {

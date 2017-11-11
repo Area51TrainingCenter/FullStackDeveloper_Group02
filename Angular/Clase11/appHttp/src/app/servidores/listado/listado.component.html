@@ -6,9 +6,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
+    <tr *ngFor="let servidor of servidores">
+      <td>{{servidor.idServidor}}</td>
+      <td>{{servidor.nombre}}</td>
     </tr>
   </tbody>
 </table>
+<button class="btn btn-success" (click)="nuevo()">Nuevo servidor</button>
