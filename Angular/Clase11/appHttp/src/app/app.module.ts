@@ -8,6 +8,7 @@ import { NucleoModule } from './nucleo/nucleo.module';
 import { AppRouting } from './app-routing.module';
 import { AutenticacionService } from './seguridad/autenticacion.service';
 import { AuthApiService } from './seguridad/auth-api.service';
+import { AutenticacionGuard } from './seguridad/autenticacion.guard';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AuthApiService } from './seguridad/auth-api.service';
     HttpClientModule,
     NucleoModule
   ],
-  providers: [AutenticacionService, AuthApiService],
+  providers: [AutenticacionService, AuthApiService, AutenticacionGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

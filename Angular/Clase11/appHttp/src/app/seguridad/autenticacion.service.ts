@@ -15,7 +15,11 @@ export class AutenticacionService {
   constructor(private authApiService: AuthApiService) { }
 
   logout(){
+    this.autenticado = false
+    localStorage.removeItem("token")
+    this.usuario = undefined
 
+    this.cambioEstado.next(false)
   }
 
   registro(usuario: IUsuario): Observable<IUsuario> {

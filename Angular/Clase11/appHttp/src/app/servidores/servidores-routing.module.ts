@@ -6,7 +6,7 @@ import { NuevoComponent } from './nuevo/nuevo.component';
 import { DetalleComponent } from './detalle/detalle.component';
 
 const routes: Routes = [
-  {path: "servidores", children:[
+  {path: "", children:[
     {path: "", component: ListadoComponent},
     {path: "nuevo", component: NuevoComponent},
     {path: "detalle/:id", component: DetalleComponent},
