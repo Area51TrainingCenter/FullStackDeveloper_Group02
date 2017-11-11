@@ -3,12 +3,17 @@
     <tr>
       <th>ID</th>
       <th>Nombre</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let servidor of servidores">
       <td>{{servidor.idServidor}}</td>
       <td>{{servidor.nombre}}</td>
+      <td>
+        <button class="btn btn-success" (click)="editar(servidor)">Editar</button>
+        <button class="btn btn-danger" (click)="eliminar(servidor)">Eliminar</button>
+      </td>
     </tr>
   </tbody>
 </table>

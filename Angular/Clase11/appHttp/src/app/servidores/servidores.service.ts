@@ -16,4 +16,16 @@ export class ServidoresService {
     return this.servidoresApi.insertar(servidor)
   }
 
+  eliminar(idServidor: number): Observable<IServidor> {
+    return this.servidoresApi.eliminar(idServidor)
+  }
+
+  actualizar(servidor: IServidor): Observable<IServidor> {
+    return this.servidoresApi.actualizar(servidor)
+  }
+
+  detalle(idServidor: number): Observable<IServidor[]> {
+    return this.servidoresApi.detalle(idServidor)
+  }
+
 }
