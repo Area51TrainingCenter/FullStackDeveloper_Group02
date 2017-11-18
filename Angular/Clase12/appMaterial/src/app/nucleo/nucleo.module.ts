@@ -5,12 +5,14 @@ import { HomeComponent } from './home/home.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { AppRouting } from '../app-routing.module';
 import { RegistroComponent } from './registro/registro.component';
+import { MaterialModule } from "../material/material.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    AppRouting
+	AppRouting,
+	MaterialModule
   ],
   declarations: [HomeComponent, CabeceraComponent, RegistroComponent],
   exports: [

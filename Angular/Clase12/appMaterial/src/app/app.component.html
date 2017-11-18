@@ -3,7 +3,7 @@
 				<app-cabecera></app-cabecera>
 				<button mat-raised-button color="primary" (click)="menu.close()">Cerrar</button>
 		</mat-sidenav>
-		<mat-toolbar color="primary">
+		<mat-toolbar color="primary" *ngIf="autenticado">
 				<button mat-icon-button (click)="menu.open()">
 						<mat-icon>menu</mat-icon>
 						{{titulo}}
@@ -13,7 +13,7 @@
 						<mat-icon>more_vert</mat-icon>
 				</button>
 				<mat-menu #menuVer="matMenu">
-						<button mat-menu-item>
+						<button mat-menu-item (click)="logout()">
 								<mat-icon>lock_open</mat-icon>
 								Logout
 						</button>
@@ -21,12 +21,8 @@
 				</mat-menu>
 		</mat-toolbar>
 
+		<div class="contenido">
+				<router-outlet></router-outlet>
+		</div>
+
 </mat-sidenav-container>	
-
-
-
-<div class="container">
-  <div class="row">
-    <router-outlet></router-outlet>
-  </div>
-</div>
