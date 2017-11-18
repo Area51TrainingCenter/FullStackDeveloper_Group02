@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let servidor of servidores">
+      <td>{{servidor.idServidor}}</td>
+      <td>{{servidor.nombre}}</td>
+      <td>
+        <button mat-raised-button color="primary" (click)="editar(servidor)">Editar</button>
+        <button mat-raised-button color="warn" (click)="eliminar(servidor)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-success" (click)="nuevo()">Nuevo servidor</button>

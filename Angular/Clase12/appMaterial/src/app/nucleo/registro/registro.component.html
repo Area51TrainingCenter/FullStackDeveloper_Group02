@@ -1,0 +1,6 @@
+<form class="form-signin" (ngSubmit)="registrar()" #formulario="ngForm">
+  <h2 class="form-signin-heading">Registro</h2>
+  <input type="email" id="inputEmail" class="form-control" placeholder="Correo" required autofocus name="email" [(ngModel)]="email">
+  <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required name="password" [(ngModel)]="password">
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!formulario.valid">Ingresar</button>
+</form>
