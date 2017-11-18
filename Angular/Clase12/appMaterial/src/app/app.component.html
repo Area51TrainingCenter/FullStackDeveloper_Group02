@@ -1,5 +1,29 @@
-<app-cabecera>
-</app-cabecera>
+<mat-sidenav-container fullscreen>
+		<mat-sidenav #menu>
+				<app-cabecera></app-cabecera>
+				<button mat-raised-button color="primary" (click)="menu.close()">Cerrar</button>
+		</mat-sidenav>
+		<mat-toolbar color="primary">
+				<button mat-icon-button (click)="menu.open()">
+						<mat-icon>menu</mat-icon>
+						{{titulo}}
+				</button>
+				<span class="espaciadora"></span>
+				<button mat-icon-button [matMenuTriggerFor]="menuVer">
+						<mat-icon>more_vert</mat-icon>
+				</button>
+				<mat-menu #menuVer="matMenu">
+						<button mat-menu-item>
+								<mat-icon>lock_open</mat-icon>
+								Logout
+						</button>
+
+				</mat-menu>
+		</mat-toolbar>
+
+</mat-sidenav-container>	
+
+
 
 <div class="container">
   <div class="row">
