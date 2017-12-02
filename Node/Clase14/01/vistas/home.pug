@@ -1,0 +1,11 @@
+extends layout
+
+include mixins/formulario
+
+block Cabecera
+	h4= titulo
+	span Creado el 03 de diciembre de 2017
+	+formularioUsuario("Ingrese su apellido")
+
+block append scripts
+	script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
