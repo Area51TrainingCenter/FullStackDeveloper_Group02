@@ -4,14 +4,16 @@ import {Application, Request, Response, NextFunction} from "express"
 import bodyParser = require("body-parser")
 import methodOverride = require("method-override")
 import * as morgan from 'morgan'
-import * as mongoose from 'mongoose'
+import mongoose = require("mongoose")
 import {conexionMongo} from './config/conexiones'
+import {router as rutaUsuario} from './rutas/Usuario'
 
 // Settings
 const app: Application = express()
 app.set("view engine", "pug")
 app.set("views", "./vistas")
 
+mongoose.Promise = global.Promise;
 mongoose.connect(conexionMongo, {
 	useMongoClient: true
 })
@@ -21,10 +23,17 @@ app.use(morgan("dev"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
 
+app.use("/usuario", rutaUsuario)
+
 // Rutas
-app.get("/usuario/registro", (req: Request, res: Response, next: NextFunction) => {
-	res.render("usuarioFormulario")
+app.get("/", (req: Request, res: Response, next: NextFunction) => {
+	res
+		.status(200)
+		.type("text/plain")
+		.send("Home")
 })
+
+
 
 // Servidor
 app.listen(4000, ()=> {
