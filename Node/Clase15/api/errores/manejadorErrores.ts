@@ -6,6 +6,11 @@ interface RespuestaError extends Error {
 }
 
 const manejador = {
+	cacheo: (ftn: (req: Request, res: Response, next: NextFunction) => Promise<any>) => {
+		return (req: Request, res: Response, next: NextFunction) => {
+			return ftn(req, res, next).catch(next)
+		}
+	},
 	noEncontrado: (req: Request, res: Response, next: NextFunction) => {
 		const error: RespuestaError = new Error("Ruta no encontrada")
 		error.status = 404
@@ -20,6 +25,9 @@ const manejador = {
 			objError.name = error.name
 			objError.message = error.message
 		}
+
+		objError.stack = objError.stack.replace(/[a-z_-\d]+.js:\d+:\d+/gi, '<mark>$&</mark>')
+		objError.stack = objError.stack.replace(/[a-z_-\d]+.ts:\d+:\d+/gi, '<mark>$&</mark>')
 	
 		res.render("error", {error: objError})
 	}

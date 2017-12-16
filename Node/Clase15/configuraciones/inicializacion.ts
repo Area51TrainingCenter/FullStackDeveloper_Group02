@@ -5,7 +5,8 @@ const parametros = {
 	mongourl: process.env.MONGOURL,
 	usuario: process.env.USUARIO,
 	contrasena: process.env.CONTRASENA,
-	ambiente: process.env.AMBIENTE
+	ambiente: process.env.AMBIENTE,
+	secretoToken: process.env.SECRETO_TOKEN
 }
 
 export {parametros}
