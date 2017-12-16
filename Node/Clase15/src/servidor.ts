@@ -10,14 +10,26 @@ import {router as rutasAuth} from '../rutas/auth'
 import {router as rutasServidor} from '../rutas/servidores'
 import {politica as autenticacionPolitica} from '../api/politicas/AutenticacionPolitica'
 import bodyParser = require("body-parser")
-
-var usuarioAutenticado
+import sesiones = require("express-session")
+import mongoose = require("mongoose")
+import {manejador} from '../api/errores/manejadorErrores'
 
 // Configuraciones
 const app: Application = express()
 app.set("puerto", parametros.puerto)
 app.set("view engine", "pug")
 app.set("views", "./vistas")
+
+mongoose.Promise = global.Promise
+mongoose.connect(
+		`mongodb://${parametros.usuario}:${parametros.contrasena}${parametros.mongourl}`,
+		{
+			useMongoClient: true
+		},
+		error => {
+			console.log("Conectado a Mongo")
+		}
+)
 
 // Middlewares
 app.use(favicon("./favicon.ico"))
@@ -28,11 +40,19 @@ app.use((req: Request, res: Response, next: NextFunction)=>{
 	next()
 })
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(sesiones({
+	secret: parametros.secretoSesion,
+	resave: false,
+	saveUninitialized: true
+}))
 
 // Rutas
 app.use("/", rutasDefecto)
 app.use("/auth", rutasAuth)
 app.use("/servidores", autenticacionPolitica, rutasServidor)
+
+app.use(manejador.noEncontrado)
+app.use(manejador.general)
 
 
 // Servidor
