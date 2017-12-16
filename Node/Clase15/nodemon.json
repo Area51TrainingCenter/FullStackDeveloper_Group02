@@ -1,0 +1,5 @@
+{
+	"watch": ["src","api","vistas","configuraciones"],
+	"ext": "ts",
+	"exec": "ts-node src/servidor"
+}

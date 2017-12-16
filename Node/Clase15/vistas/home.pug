@@ -1,0 +1,12 @@
+extends parciales/layout
+
+block contenido
+	div.row
+		div.col-6
+			form(method="post",action="/auth/login")
+				div.form-group
+					input(type="email",name="usuario",placeholder="Ingrese su usuario")
+				div.form-group
+					input(type="password",name="contrasena",placeholder="Ingrese su contraseña")
+				div.form-group
+					button.btn-success(type="submit") Ingresar
