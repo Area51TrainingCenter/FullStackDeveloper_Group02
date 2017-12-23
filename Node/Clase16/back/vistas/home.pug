@@ -1,0 +1,9 @@
+extends parciales/layout
+
+include parciales/mixinFormulario
+
+block contenido
+	div.row
+		div.col-6
+			+formulario("/auth/login","Ingresar")
+			+formulario("/auth/registro","Registrar")

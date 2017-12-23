@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<button class="btn btn-danger" (click)="obtenerUsuarios()">Obtener Usuarios</button>
+	</div>
+	<div class="row">
+
+		<table class="col-6 table table-hover table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Correo</th>
+					<th>Contraseña</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let usuario of usuarios">
+					<td>{{usuario._id}}</td>
+					<td>{{usuario.correo}}</td>
+					<td>{{usuario.contrasena}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

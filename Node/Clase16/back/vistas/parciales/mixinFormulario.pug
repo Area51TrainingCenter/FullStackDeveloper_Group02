@@ -1,0 +1,8 @@
+mixin formulario(accion, etiqueta)
+	form(method="post",action=accion)
+		div.form-group
+			input(type="email",name="usuario",placeholder="Ingrese su usuario")
+		div.form-group
+			input(type="password",name="contrasena",placeholder="Ingrese su contraseña")
+		div.form-group
+			button.btn-success(type="submit")= etiqueta

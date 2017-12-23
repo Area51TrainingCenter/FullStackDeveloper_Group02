@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"types": [
+			"node",
+			"express",
+			"mongoose"
+		]
+	},
+	"include": [
+		"**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

@@ -1,0 +1,12 @@
+doctype html
+html
+	head
+		title= locals.titulo
+		link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css")
+	body
+		div.container
+			h1= locals.titulo
+			br
+			a.btn.btn-warn(href="/auth/logout") Cerrar Sesión
+			hr
+			block contenido

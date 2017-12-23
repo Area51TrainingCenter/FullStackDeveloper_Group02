@@ -1,0 +1,7 @@
+extends parciales/layout
+
+block contenido
+	div.row
+		h2= error.message
+		h3= error.status
+		p.pre!= error.stack

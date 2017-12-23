@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+			<form #f="ngForm">
+				<div class="form-group">
+					<input type="text" class="form-control" name="correo" [(ngModel)]="usuario.correo">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="contrasena" [(ngModel)]="usuario.contrasena">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-success" (click)="login()">Login</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
