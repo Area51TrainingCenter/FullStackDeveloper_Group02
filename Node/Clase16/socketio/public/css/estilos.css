@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box
+}
+
+div.contenedor {
+	display: flex;
+	flex-direction: column;
+	height: 95vh
+}
+
+div.visor {
+	flex-grow: 160;
+	background-color: rgba(236, 234, 234, 0.91);
+	border: 1px solid #5D5B5B;
+	padding: 10px
+}

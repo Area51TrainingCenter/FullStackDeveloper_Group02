@@ -1,0 +1,17 @@
+extends base
+
+block cabecera
+	link(rel="stylesheet",href="/css/estilos.css")
+
+block contenido
+	div.row
+		h1 Chat
+	div.row
+		div.contenedor.col-12
+			div.visor
+			div.form-group
+				input.form-control(type="text",id="nombre")
+			div.form-group
+				input.form-control(type="text",id="mensaje")
+			div.form-group
+				button.btn.btn-block.btn-success(type="button",id="btnEnviar") Enviar
