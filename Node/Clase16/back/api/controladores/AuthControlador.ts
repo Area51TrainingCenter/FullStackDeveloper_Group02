@@ -1,4 +1,3 @@
-import Usuario from '../../../Clase14/02/src/api/modelos/Usuarios';
 import {Request, Response, NextFunction} from "express"
 import {modelo as UsuarioModelo} from '../modelos/UsuarioModelo' 
 import {servicio as servicioTokens} from "../servicios/tokenServicio"
@@ -45,6 +44,9 @@ const controlador = {
 	},
 	nuevoAccessToken: (req: Request, res: Response, next: NextFunction) => {
 		const refreshToken = req.body.refreshToken
+
+		console.log("Refresh Token", refreshToken)
+
 		const token: any = servicioTokens.generarNuevoAccessToken(refreshToken)
 
 		if(token.status){

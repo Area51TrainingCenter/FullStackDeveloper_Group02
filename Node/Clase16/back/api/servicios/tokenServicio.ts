@@ -3,7 +3,7 @@ import moment = require("moment")
 import randToken = require("rand-token")
 import {parametros} from "../../configuraciones/inicializacion"
 
-const tiempoVida = 50, unidad = "days"
+const tiempoVida = 15, unidad = "seconds"
 
 const refreshTokens = {}
 
@@ -30,7 +30,7 @@ const servicio = {
 	
 				resolve(payload.id)
 			} catch (error) {
-				if(error.message === "token expired") {
+				if(error.message.toLowerCase() === "token expired") {
 					reject({
 						status: 401,
 						message: "El token ha expirado"

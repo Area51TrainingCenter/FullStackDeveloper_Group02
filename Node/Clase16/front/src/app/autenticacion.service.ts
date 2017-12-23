@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AutenticacionService {
-	rutaApi: string = "http://localhost:3000"
+	rutaApi: string = "http://localhost:4000"
 	autenticado: boolean = false
 
 	constructor(private http: HttpClient, private router: Router) { }
 
 	login(usuario: IUsuario): void {
-		this.http.post<IUsuario>(`${this.rutaApi}/usuarios/login`, usuario, {
+		this.http.post<IUsuario>(`${this.rutaApi}/auth/login`, usuario, {
 			observe: "body",
 			responseType: "json"
 		}).subscribe(
@@ -30,7 +30,7 @@ export class AutenticacionService {
 	}
 
 	obtenerNuevoToken(refreshToken: string): Observable<string> {
-		return this.http.post<string>(`${this.rutaApi}/usuarios/nuevo-token`, {refreshToken}, {
+		return this.http.post<string>(`${this.rutaApi}/auth/nuevo-token`, {refreshToken}, {
 			observe: "body",
 			responseType: "json"
 		})
@@ -48,7 +48,7 @@ export class AutenticacionService {
 	}
 
 	obtenerUsuarios(): Observable<IUsuario[]> {
-		return this.http.get<IUsuario[]>(`${this.rutaApi}/usuarios`,{
+		return this.http.get<IUsuario[]>(`${this.rutaApi}/auth/listado`,{
 			observe: "body",
 			responseType: "json"
 		})

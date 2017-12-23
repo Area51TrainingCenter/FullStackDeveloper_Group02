@@ -10,7 +10,7 @@ import { NgForm } from "@angular/forms"
 })
 export class AutenticacionComponent implements OnInit {
 	usuario: IUsuario = {
-		correo: "",
+		usuario: "",
 		contrasena: ""
 	}
 

@@ -1,5 +1,5 @@
 export interface IUsuario {
-	correo?: string,
+	usuario?: string,
 	contrasena?: string,
 	accessToken?: string,
 	refreshToken?: string

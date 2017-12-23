@@ -13,6 +13,7 @@ import bodyParser = require("body-parser")
 import sesiones = require("express-session")
 import mongoose = require("mongoose")
 import {manejador} from '../api/errores/manejadorErrores'
+import cors = require("cors")
 
 // Configuraciones
 const app: Application = express()
@@ -34,17 +35,20 @@ mongoose.connect(
 // Middlewares
 app.use(favicon("./favicon.ico"))
 app.use(morgan("dev"))
+app.use(cors({"origin": "*"}))
 app.use((req: Request, res: Response, next: NextFunction)=>{
 	res.locals.titulo = parametros.titulo
 
 	next()
 })
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 app.use(sesiones({
 	secret: parametros.secretoSesion,
 	resave: false,
 	saveUninitialized: true
 }))
+
 
 // Rutas
 app.use("/", rutasDefecto)
