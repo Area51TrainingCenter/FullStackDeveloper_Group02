@@ -8,6 +8,13 @@ div.contenedor {
 	height: 95vh
 }
 
+div.estado {
+	font-size: 10px;
+	font-style: italic;
+	background-color: rgba(236, 234, 234, 0.91);
+	padding: 2px
+}
+
 div.visor {
 	flex-grow: 160;
 	background-color: rgba(236, 234, 234, 0.91);
