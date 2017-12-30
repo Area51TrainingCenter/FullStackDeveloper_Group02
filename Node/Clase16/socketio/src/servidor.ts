@@ -1,12 +1,13 @@
 // Declaraciones e importaciones
 import express = require("express")
-import {Application, Request, Response, NextFunction} from "express"
+import { Application, Request, Response, NextFunction } from "express"
 import socket = require("socket.io")
 
 // Configuraciones
 const app: Application = express()
 app.set("view engine", "pug")
 app.set("views", "./vistas")
+app.set("port", process.env.PORT || 4000)
 
 // Middlewares
 app.use(express.static("public"))
@@ -17,8 +18,8 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 })
 
 // Servidor
-const servidor = app.listen(4000, ()=> {
-	console.log("Ejecutando en el puerto 4000")
+const servidor = app.listen(app.get("port"), () => {
+	console.log(`Ejecutando en el puerto ${app.get("port")}`)
 })
 
 // Socket.io

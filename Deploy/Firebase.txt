@@ -1,0 +1,13 @@
+1. Instalar Firebase-Tools
+	npm i firebase-tools -g
+
+2. Crear una carpeta "public" y mover los archivos a esa carpeta.
+
+3. Loguearse en Firebase
+	firebase login
+
+4. Crear y preparar los archivos para publicar en Firebase
+	firebase init
+
+5. Publicar
+	firebase deploy

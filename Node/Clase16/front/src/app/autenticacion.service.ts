@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AutenticacionService {
-	rutaApi: string = "http://localhost:4000"
+	//rutaApi: string = "http://localhost:4000"
+	rutaApi: string = "https://back-token.herokuapp.com"
 	autenticado: boolean = false
 
 	constructor(private http: HttpClient, private router: Router) { }
@@ -26,11 +27,11 @@ export class AutenticacionService {
 			error => {
 				console.log(error)
 			}
-		)
+			)
 	}
 
 	obtenerNuevoToken(refreshToken: string): Observable<string> {
-		return this.http.post<string>(`${this.rutaApi}/auth/nuevo-token`, {refreshToken}, {
+		return this.http.post<string>(`${this.rutaApi}/auth/nuevo-token`, { refreshToken }, {
 			observe: "body",
 			responseType: "json"
 		})
@@ -48,7 +49,7 @@ export class AutenticacionService {
 	}
 
 	obtenerUsuarios(): Observable<IUsuario[]> {
-		return this.http.get<IUsuario[]>(`${this.rutaApi}/auth/listado`,{
+		return this.http.get<IUsuario[]>(`${this.rutaApi}/auth/listado`, {
 			observe: "body",
 			responseType: "json"
 		})
